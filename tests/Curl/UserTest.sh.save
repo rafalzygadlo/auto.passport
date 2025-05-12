@@ -1,0 +1,5 @@
+curl -v -k GET http://localhost/api/v1/user?name=de \
+-H 'Accept: application/json' \
+-H 'Content-Type: application/json' \
+-H "Authorization: Bearer 1|1NAyEBCEjnvj7iQYLpqkWdXIStOuRemZzwnlAO3k80b3c982"
+

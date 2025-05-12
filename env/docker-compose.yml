@@ -1,0 +1,45 @@
+services:
+
+  nginx:
+    container_name: auto.passport.nginx
+    image: nginx:latest
+    build: './nginx/'
+    ports:
+      - "80:80"
+    links:
+      - php  
+      - mariadb
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./..:/var/www/html
+    restart: unless-stopped
+
+  php:
+    container_name: auto.passport.php
+    image: php:8.2-fpm
+    build: './php/'
+    expose: 
+       - 9000
+    links:  
+       - mariadb
+    volumes:
+      - ./..:/var/www/html
+    restart: unless-stopped
+
+  mariadb:
+    container_name: auto.passport.mariadb
+    build: './mariadb/'
+    image: mariadb:latest
+    ports:
+      - "3306:3306"
+    #command: mysqld --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./..:/var/www/html
+    environment:
+      - MARIADB_DATABASE=db
+      - MARIADB_ROOT_PASSWORD=pwd
+      - MARIADB_USER=usr
+      - MARIADB_PASSWORD=pwd
+    restart: unless-stopped
+
+
