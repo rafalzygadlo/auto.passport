@@ -37,7 +37,7 @@ Route::group([
     Route::get('/word/edit/{postId}', App\Livewire\Word\WordForm::class)->name('word.edit'); 
     
 
-    Route::get('/rate',App\Livewire\Rate\Rate::class)->name('rate.index');
+    Route::get('/car',App\Livewire\Car::class)->name('car.index');
 
     Route::get('/settings',App\Livewire\Settings::class)->name('settings.index');
     Route::get('/profile',App\Livewire\Profile::class)->name('profile.index');

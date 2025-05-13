@@ -11,20 +11,19 @@ RUN apt install libzip-dev -y
 RUN docker-php-ext-install mysqli
 RUN docker-php-ext-enable mysqli
 
-RUN docker-php-ext-install mysqli pdo pdo_mysql
+RUN docker-php-ext-install pdo pdo_mysql
 RUN docker-php-ext-enable pdo_mysql
-
 
 RUN apt-get install -y zlib1g-dev libicu-dev g++
 
 RUN docker-php-ext-install intl
-RUN docker-php-ext-configure intl 
+RUN docker-php-ext-configure intl
 
 RUN docker-php-ext-install exif
-RUN docker-php-ext-configure exif 
+RUN docker-php-ext-configure exif
 
 RUN docker-php-ext-install pcntl
-RUN docker-php-ext-configure pcntl 
+RUN docker-php-ext-configure pcntl
 
 RUN docker-php-ext-install zip
 RUN docker-php-ext-configure zip
