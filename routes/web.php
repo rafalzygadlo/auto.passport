@@ -31,6 +31,7 @@ Route::post('/email/verification-notification', function (Request $request) {
 // user routes
 Route::get('/',App\Livewire\Main::class);
 Route::get('/login',App\Livewire\Auth\Login::class)->name('login');
+Route::get('/register',App\Livewire\Auth\Register::class)->name('register');
 Route::post('/login',[App\Livewire\Auth\Login::class,'login'])->name('login');
 Route::get('/logout',[App\Livewire\Auth\Login::class,'logout'])->name('logout');
 

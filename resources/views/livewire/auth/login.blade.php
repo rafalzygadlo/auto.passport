@@ -12,7 +12,7 @@
 
            <br>
             <div class="card">
-                <h1 class="card-header text-center">@lang('auth.title') </h1>
+                <div class="card-header text-center">@lang('auth.title') </div>
 
                 <div class="card-body">
                     <form wire:submit.prevent="login">
