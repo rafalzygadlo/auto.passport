@@ -1,6 +1,6 @@
 <div class="container-fluid">
 <h2 class="mb-4"><i class="bi bi-collection"></i> Moje pojazdy</h2>
-            
+
             <div class="row mb-4">
                 <div class="col-md-4">
                     <div class="card dashboard-card h-100">
@@ -32,7 +32,8 @@
             </div>
             <div class="row justify-content-center">
         <div class="h-50">
-            <livewire:user.user-table />
+
+            <livewire:car.car-table />
         </div>
     </div>
         </div>

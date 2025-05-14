@@ -9,7 +9,8 @@ class User extends Component
 
     public function render()
     {
-        return view('livewire.user.index')->layout('layouts.user');
+        return view('livewire.user.index')
+        ->layout('layouts.app');
     }
 
 }

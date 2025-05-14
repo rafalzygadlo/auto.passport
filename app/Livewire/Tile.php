@@ -13,7 +13,7 @@ class Tile extends Component
 
     public function render()
     {
-        return view('livewire.tile')->layout('layouts.user');
+        return view('livewire.tile');
     }
 
 }

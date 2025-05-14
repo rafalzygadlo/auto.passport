@@ -11,20 +11,18 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    
+
     <script src="{{ asset('js/livewire/bootstrap.bundle.js') }}"></script>
-    
+
     <link href="{{ asset('css/livewire/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/livewire/font/bootstrap-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('css/livewire/app.css') }}">
-        
-    
+
+
     @livewireStyles
-        
+
 </head>
 <body >
-
-
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -37,27 +35,34 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto" id="mainNav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/" id="homeLink"><i class="bi bi-house"></i> Strona główna</a>
+                        <a class="nav-link active" href="/" id="homeLink"><i class="bi bi-house"></i></a>
                     </li>
+
+                </ul>
+                @auth
+                <ul class="navbar-nav" id="authNav">
                     <li class="nav-item">
                         <a class="nav-link" href="/car" id="myCarsLink"><i class="bi bi-collection"></i> Moje pojazdy</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/service" id="workshopLink"><i class="bi bi-tools"></i> Panel warsztatu</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav" id="authNav">
-                    <li class="nav-item">
                         <a class="nav-link" href="/logout" id="loginLink"><i class="bi bi-box-arrow-in-right"></i> Wyloguj</a>
                     </li>
-                    
                 </ul>
-                
+                @else
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login" id="loginLink"><i class="bi bi-box-arrow-in-right"></i> Zaloguj</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register" id="registerLink"><i class="bi bi-person-plus"></i> Zarejestruj</a>
+                    </li>
+                </ul>
+                @endauth
             </div>
         </div>
     </nav>
-             
-   <!--     
+
+   <!--
    <div class="container-fluid">
     <div class="row">
     <nav id="navbarNav" style="position:fixed" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
@@ -134,7 +139,7 @@
           </li>
         </ul>
       </div>
-    </nav>      
+    </nav>
 -->
 
 
@@ -146,9 +151,9 @@
         </div>
 </main>
 
-   
-       
-       
+
+
+
   <footer class="py-3 my-4">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
       <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
@@ -160,7 +165,7 @@
   </footer>
 
 
-    
+
     @livewireScripts
 </body>
 </html>

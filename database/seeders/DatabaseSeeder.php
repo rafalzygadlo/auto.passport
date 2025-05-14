@@ -8,6 +8,7 @@ use App\Models\Customer;
 use App\Models\Task;
 use App\Models\User;
 use App\Models\Team;
+use App\Models\Car;
 use App\Models\Blog\Author;
 use App\Models\Blog\Post;
 use App\Models\Comment;
@@ -30,14 +31,6 @@ class DatabaseSeeder extends Seeder
         // Clear images
         Storage::deleteDirectory('public');
 
-        $this->teamMaxkod();
-        $this->teamInterium();
-
-    }
-
-    protected function teamMaxkod()
-    {
-    
         // create permissions
         $permissionSeeder = new PermissionSeeder();
         $permissionSeeder->run();
@@ -55,8 +48,8 @@ class DatabaseSeeder extends Seeder
             'active' => 1,
             'email' => 'razy@admin.com',
             'password' => bcrypt('password'),
-            'email_verified_at' => now()
-            
+            //'email_verified_at' => now()
+
         ]);
 
         //create users
@@ -64,6 +57,15 @@ class DatabaseSeeder extends Seeder
         $customers = $this->withProgressBar(1000, fn () => User::factory(1)
             ->create());
         $this->command->info('Users created.');
+
+         //create cars
+         /*
+         $this->command->warn(PHP_EOL . 'Creating cars...');
+         $blogCategories = $this->withProgressBar(20, fn () => Car::factory(1)
+             ->count(20)
+             ->create());
+         $this->command->info('Blog categories created.');
+         */
 
         //create customers
         $this->command->warn(PHP_EOL . 'Creating customers...');
@@ -84,7 +86,7 @@ class DatabaseSeeder extends Seeder
             ->count(20)
             ->create());
         $this->command->info('Blog categories created.');
- 
+
         $this->command->warn(PHP_EOL . 'Creating blog authors and posts...');
         $this->withProgressBar(2, fn () => Author::factory(1)
             ->has(
@@ -94,30 +96,14 @@ class DatabaseSeeder extends Seeder
                              ->state(fn (array $attributes, Post $post) => ['customer_id' => $customers->random(1)->first()->id]),
                      )
                      ->state(fn (array $attributes, Author $author) => ['blog_category_id' => $blogCategories->random(1)->first()->id])
-                 
+
              )
              ->create());
         $this->command->info('Blog authors and posts created.');
 
     }
 
-    protected function teamInterium()
-    {
 
-	    User::factory()->create([
-	        'role_id' => 1,
-            'name' => 'grsz',
-            'first_name' => 'Gr',
-            'last_name' => 'Sz',
-            'email' => 'grsz@admin.com',
-            'active' => 1,
-            'password' => bcrypt('password'),
-            'email_verified_at' => now()
-            
-        ]);
-        
-        
-    }
 
     protected function withProgressBar(int $amount, Closure $createCollectionOfOne): Collection
     {
